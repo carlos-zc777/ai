@@ -74,7 +74,12 @@ app.post("/authorize", async (c) => {
 		}
 
 		// Add client to approved list
-		console.log("Cookie-related bindings:", Object.keys(c.env).filter(key => key.toLowerCase().includes("cookie")));
+		console.log("Estado de bindings:", {
+  cookie: typeof c.env.COOKIE_ENCRYPTION_KEY,
+  googleId: typeof c.env.GOOGLE_CLIENT_ID,
+  googleSecret: typeof c.env.GOOGLE_CLIENT_SECRET,
+  kv: typeof c.env.OAUTH_KV
+});
 		const approvedClientCookie = await addApprovedClient(
 			c.req.raw,
 			state.oauthReqInfo.clientId,
