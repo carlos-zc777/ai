@@ -73,6 +73,7 @@ app.post("/authorize", async (c) => {
 		}
 
 		// Add client to approved list
+		console.log("COOKIE_ENCRYPTION_KEY present:", Boolean(c.env.COOKIE_ENCRYPTION_KEY));
 		const approvedClientCookie = await addApprovedClient(
 			c.req.raw,
 			state.oauthReqInfo.clientId,
