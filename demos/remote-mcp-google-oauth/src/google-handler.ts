@@ -49,6 +49,7 @@ app.get("/authorize", async (c) => {
 
 app.post("/authorize", async (c) => {
 	try {
+      console.log("Cookie-related bindings:", Object.keys(c.env).filter(key => key.toLowerCase().includes("cookie")));
 		// Read form data once
 		const formData = await c.req.raw.formData();
 
